@@ -55,7 +55,7 @@ module ServerDensity
           params
         end
 
-        req = { method: method, url: "#{base_url}#{path}", headers: options }
+        req = { :method => method, :url => "#{base_url}#{path}", :headers => options }
         req[:payload] = payload if [:patch, :post, :put].include? method
 
         begin

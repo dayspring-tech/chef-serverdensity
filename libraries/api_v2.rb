@@ -27,8 +27,8 @@ module ServerDensity
 
       def find_resource(type, meta)
         get('/inventory/resources', :params => {
-          filter: Chef::JSONCompat.to_json(validate(meta)),
-          type: type
+          :filter => Chef::JSONCompat.to_json(validate(meta)),
+          :type => type
         }).body.first
       rescue => err
         error(err, "Unable to retrieve #{type} from Serverdensity")

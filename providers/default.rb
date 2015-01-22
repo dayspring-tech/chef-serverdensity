@@ -163,18 +163,18 @@ end
 
 def metadata
   @metadata ||= {
-    group: node.serverdensity.device_group || 'chef-autodeploy',
-    hostname: node.hostname,
-    name: @new_resource.name
+    :group => node.serverdensity.device_group || 'chef-autodeploy',
+    :hostname => node.hostname,
+    :name => @new_resource.name
   }.merge(provider).merge(@new_resource.metadata)
 end
 
 def provider
   @provider ||= case
     when (node.ec2.instance_id rescue false)
-      { provider: 'amazon', providerId: node.ec2.instance_id }
+      { :provider => 'amazon', :providerId => node.ec2.instance_id }
     when (node.opsworks.instance.aws_instance_id rescue false)
-      { provider: 'amazon', providerId: node.opsworks.instance.aws_instance_id }
+      { :provider => 'amazon', :providerId => node.opsworks.instance.aws_instance_id }
     else
       {}
   end
