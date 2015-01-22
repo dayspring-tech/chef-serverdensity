@@ -26,10 +26,15 @@ case node[:platform]
 
   when 'redhat', 'centos', 'fedora', 'scientific', 'amazon'
 
+    yum_key "boxedice-public" do
+      url "https://www.serverdensity.com/downloads/boxedice-public.key"
+      action :add
+    end
+
     yum_repository 'serverdensity' do
       description 'Server Density sd-agent'
-      baseurl 'https://www.serverdensity.com/downloads/linux/redhat/'
-      gpgkey 'https://www.serverdensity.com/downloads/boxedice-public.key'
+      url 'https://www.serverdensity.com/downloads/linux/redhat/'
+      key 'boxedice-public'
     end
 
 end
