@@ -24,6 +24,9 @@ case node[:platform]
       allow false
     end
 
+    package 'python-dev'
+    package 'python-mysqldb'
+
   when 'redhat', 'centos', 'fedora', 'scientific', 'amazon'
 
     yum_key "boxedice-public" do
@@ -36,6 +39,9 @@ case node[:platform]
       url 'https://www.serverdensity.com/downloads/linux/redhat/'
       key 'boxedice-public'
     end
+
+    package 'python-devel'
+    package 'MySQL-python'
 
 end
 
